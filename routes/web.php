@@ -33,13 +33,16 @@ Route::get('/', function () {
 //     return "this url is  $url";
 // }));
 
-
-// Route::get('/post/{id}', [C\PostsController::class, 'index']);
-
-Route::resource('/posts', C\PostsController::class);
-
-Route::get('/contact', [C\PostsController::class, "show_my_view"]);
-
 // Route::get('/contact', function () {
 //     return view('Contact');
 // });
+
+// Route::get('/post/{id}', [C\PostsController::class, 'index']);
+
+// Route::resource('/posts', C\PostsController::class);
+
+
+
+Route::get('/contact', [C\PostsController::class, "show_my_view"]);
+
+Route::get('/post/{id}/{name}/{password}', [C\PostsController::class, "show_post"]);

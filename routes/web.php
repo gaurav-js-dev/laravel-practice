@@ -43,6 +43,6 @@ Route::get('/', function () {
 
 
 
-Route::get('/contact', [C\PostsController::class, "show_my_view"]);
+Route::get('/contact', [C\PostsController::class, "contact"]);
 
 Route::get('/post/{id}/{name}/{password}', [C\PostsController::class, "show_post"]);

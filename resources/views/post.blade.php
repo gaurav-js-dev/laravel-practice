@@ -1,17 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laravel</title>
-</head>
+@section('content')
 
-<body>
-    <div class="container">
-        <h1>Post {{$id}} {{$name}} {{$password}}</h1>
-    </div>
-</body>
+<h1>Post Page {{$id}} {{$name}} {{$password}} </h1>
+@stop
 
-</html>
+@section('footer')
+<!-- <script>
+    console.log("Hello I am learning Laravel")
+</script> -->
+@stop

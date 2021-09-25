@@ -190,10 +190,11 @@ Route::get('/', function () {
 // });
 
 
-Route::get('/user/{id}/post', function ($id) {
-    return User::find($id)->post->title;
-});
+// Route::get('/user/{id}/post', function ($id) {
+//     return User::find($id)->post->title;
+// });
 
+// ORM one to one relationship
 
 // Route::get('/user', function () {
 //     $users = User::all();
@@ -202,6 +203,19 @@ Route::get('/user/{id}/post', function ($id) {
 //     }
 // });
 
-Route::get('/post/{id}/user', function ($id) {
-    return Post::find($id)->user->name;
-});
+
+// ORM INVERSE
+
+// Route::get('/post/{id}/user', function ($id) {
+//     return Post::find($id)->user->name;
+// });
+
+// ORM ONE TO MANY RELATIONSHIPS
+
+// Route::get('/post', function () {
+//     $user = User::find(1);
+
+//     foreach ($user->posts as $post) {
+//         echo $post->title . "<br>";
+//     }
+// });

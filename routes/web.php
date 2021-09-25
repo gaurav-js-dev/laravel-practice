@@ -1,7 +1,37 @@
 <?php
 
+use App\Models\Post;
+use App\Models\User;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers as C;
+
+// Application routes
+
+// Route::get('/insert', function () {
+//     DB::insert('insert into posts(title, content) values(?, ?)', ['Laravel is amazing with Edwin', 'Still React Is the best programming language out there']);
+// });
+
+
+// Route::get('/read', function () {
+//     $results = DB::select('select * from posts where id=?', [2]);
+
+
+//     foreach ($results as $post) {
+//         return $post->title;
+//     }
+// });
+
+
+// Route::get('/update', function () {
+//     $updated = DB::update('update posts set title ="updated title" where id = ?', [1]);
+//     return $updated;
+// });
+
+// Route::get('/delete', function () {
+//     $deleted = DB::delete('delete from posts where id=?', [1]);
+//     return $deleted;
+// });
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +44,13 @@ use App\Http\Controllers as C;
 |
 */
 
+
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+
 // Route::get('/about', function () {
 //     return 'About US';
 // });
@@ -43,6 +77,131 @@ Route::get('/', function () {
 
 
 
-Route::get('/contact', [C\PostsController::class, "contact"]);
+// Route::get('/contact', [C\PostsController::class, "contact"]);
 
-Route::get('/post/{id}/{name}/{password}', [C\PostsController::class, "show_post"]);
+// Route::get('/post/{id}/{name}/{password}', [C\PostsController::class, "show_post"]);
+
+
+// ORM 
+
+
+
+// Route::get('/read', function () {
+//     $posts = Post::all();
+
+//     foreach ($posts as $post) {
+//         return $post->title;
+//     }
+// });
+
+
+// FIND DATA ORM
+
+// Route::get('/find', function () {
+//     $post = Post::find(2);
+//     return $post->title;
+// });
+
+
+// Route::get('/findwhere', function () {
+//     $posts = Post::where('id', 2)->orderBy('id', 'desc')->take(1)->get();
+
+//     return $posts;
+// });
+// Route::get('/findmore', function () {
+//     // $posts = Post::findOrFail(1);
+//     $posts = Post::where('users_count', '<', 50)->firstOrFail();
+
+//     return $posts;
+// });
+
+
+// INSERT ORM 
+
+// Route::get('/basicinsert', function () {
+//     $post = new Post;
+//     $post->title = "New ORM Title";
+//     $post->content = 'wow eloquent is really cool, look at the content';
+//     $post->save();
+// });
+
+// Update ORM
+
+// Route::get('/basicinsert', function () {
+
+//     $post =  Post::find(5);
+//     $post->title = "I am learning now";
+//     $post->save();
+// });
+
+
+// MASS ASSIGN IN ONE SHOT ORM
+
+// Route::get('/create', function () {
+//     Post::create(['title' => 'the create method', 'content' => 'Wow I am learning backend these days with PHP']);
+// });
+
+// ORM Update Method
+
+
+// Route::get('/update', function () {
+//     Post::where('id', 2)->where('is_admin', 0)->update(['title' => 'This is new PHP Title', 'content' => 'PHP IS AN AMAZING BUT OLD TECH']);
+// });
+
+// ORM DELETE
+
+// Route::get('/delete', function () {
+//     $post = Post::find(6);
+
+//     $post->delete();
+// });
+
+
+// Route::get('delete2', function () {
+//     Post::destroy(3, 5);
+// });
+
+
+// Route::get('softdelete', function () {
+//     Post::find('9')->delete();
+// });
+
+// ORM Read soft delete
+
+// Route::get('/readsoftdelete', function () {
+//     // $post = Post::find('7');
+//     // return $post;
+
+//     $post = Post::onlyTrashed()->get();
+//     return $post;
+// });
+
+
+// Route::get('/restore', function () {
+
+//     $post = Post::withTrashed()->restore();
+//     return $post;
+// });
+
+
+
+// Route::get('forecedelete', function () {
+//     Post::find('9')->forceDelete();
+// });
+
+
+Route::get('/user/{id}/post', function ($id) {
+    return User::find($id)->post->title;
+});
+
+
+// Route::get('/user', function () {
+//     $users = User::all();
+//     foreach ($users as $post) {
+//         return $post->id;
+//     }
+// });
+
+Route::get('/post/{id}/user', function ($id) {
+    return Post::find($id)->user->name;
+});

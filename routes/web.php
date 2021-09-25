@@ -135,6 +135,14 @@ Route::get('/', function () {
 // });
 
 
+// Route::get('/basicinsert', function () {
+
+//     $post =  Post::find(5);
+//     $post->title = "I am learning now";
+//     $post->save();
+// });
+
+
 // MASS ASSIGN IN ONE SHOT ORM
 
 // Route::get('/create', function () {
@@ -195,6 +203,10 @@ Route::get('/', function () {
 // });
 
 // ORM one to one relationship
+Route::get('/user/{id}/post', function ($id) {
+    return User::find($id)->post->title;
+});
+
 
 // Route::get('/user', function () {
 //     $users = User::all();
@@ -219,3 +231,6 @@ Route::get('/', function () {
 //         echo $post->title . "<br>";
 //     }
 // });
+Route::get('/post/{id}/user', function ($id) {
+    return Post::find($id)->user->name;
+});

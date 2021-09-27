@@ -2,6 +2,7 @@
 
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Role;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers as C;
@@ -197,15 +198,13 @@ Route::get('/', function () {
 //     Post::find('9')->forceDelete();
 // });
 
+// ORM ONE ON ONE
 
 // Route::get('/user/{id}/post', function ($id) {
 //     return User::find($id)->post->title;
 // });
 
-// ORM one to one relationship
-Route::get('/user/{id}/post', function ($id) {
-    return User::find($id)->post->title;
-});
+
 
 
 // Route::get('/user', function () {
@@ -216,11 +215,14 @@ Route::get('/user/{id}/post', function ($id) {
 // });
 
 
-// ORM INVERSE
+// ORM one to one INVERSE
 
 // Route::get('/post/{id}/user', function ($id) {
 //     return Post::find($id)->user->name;
 // });
+
+
+
 
 // ORM ONE TO MANY RELATIONSHIPS
 
@@ -231,6 +233,44 @@ Route::get('/user/{id}/post', function ($id) {
 //         echo $post->title . "<br>";
 //     }
 // });
-Route::get('/post/{id}/user', function ($id) {
-    return Post::find($id)->user->name;
-});
+
+// ORM Many TO MANY RELATIONSHIPS
+
+// Route::get('/user/{id}/role', function ($id) {
+
+//     $user = User::find($id)->roles()->orderby('id', "desc")->get();
+
+//     return $user;
+
+//     // foreach ($user->roles as $role) {
+//     //     return $role->name . "<br>";
+//     // }
+// });
+
+
+// Accessing the intermediate table/ pivot 
+
+// Route::get("user/pivot", function () {
+//     $user = User::find(1);
+
+//     foreach ($user->roles as $role) {
+//         echo $role;
+//     }
+// });
+
+// Polymorphic relations 
+
+// Route::get('user/photos', function () {
+
+//     $user = User::find(1);
+//     foreach ($user->photos as $photo) {
+//         return $photo->path;
+//     }
+// });
+// Route::get('post/photos', function () {
+
+//     $post = Post::find(1);
+//     foreach ($post->photos as $photo) {
+//         return $photo->path;
+//     }
+// });

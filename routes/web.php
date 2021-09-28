@@ -274,3 +274,8 @@ Route::get('/', function () {
 //         return $photo->path;
 //     }
 // });
+
+
+// Crud Application 
+
+Route::resource('/posts', C\PostsController::class);

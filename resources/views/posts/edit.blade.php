@@ -8,7 +8,14 @@
     <input type="hidden" name="_method" value="PUT">
     @csrf
     <input value="{{$post->title}}" type="text" name="title" placeholder="Enter Title">
-    <button type="submit" name="submit">Submit</button>
+    <button value="UPDATE" type="submit" name="submit">Submit</button>
+</form>
+
+<form method="POST" action="/posts/{{$post->id}}">
+    @csrf
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" name="submit" value="DELETE">
+
 </form>
 
 @section('footer')

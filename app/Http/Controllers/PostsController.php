@@ -98,8 +98,11 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
+
     {
-        //
+        // Post::whereId($id)->delete();
+        Post::findOrFail($id)->delete();
+        return redirect('/posts');
     }
 
     public function contact()

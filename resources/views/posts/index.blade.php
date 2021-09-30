@@ -2,7 +2,6 @@
 
 @section('content')
 
-@if (count($posts))
 
 
 <ul>
@@ -12,6 +11,5 @@
 </ul>
 
 
-@endif
 
 @section('footer')

@@ -29,4 +29,10 @@ class Post extends Model
     {
         $this->attributes['title'] = ucfirst($value);
     }
+
+
+    public static function scopeShow($query)
+    {
+        return $query->orderBy('id', 'asc')->get();
+    }
 }

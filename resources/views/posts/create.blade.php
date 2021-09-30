@@ -4,10 +4,24 @@
 
 <h1>Create a Post</h1>
 
-<form method="POST" action="/posts">
-    @csrf
-    <input type="text" name="title" placeholder="Enter Title">
-    <button type="submit" name="submit">Submit</button>
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
+{!! Form::open(['method'=>'POST','action'=>'App\Http\Controllers\PostsController@store']) !!}
+<div class="form-group">
+    {!! Form::label('title','Title') !!}
+    {!! Form::text('title',null,['class'=>'form-control']) !!}
+</div>
+
+{!! Form::submit('Create Post',['class'=>'btn-primary']) !!}
+
 </form>
 
 @section('footer')

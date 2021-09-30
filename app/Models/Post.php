@@ -24,4 +24,9 @@ class Post extends Model
     {
         return $this->morphMany('App\Models\Photo', 'imageable');
     }
+
+    public function setTitleAttribute($value)
+    {
+        $this->attributes['title'] = ucfirst($value);
+    }
 }

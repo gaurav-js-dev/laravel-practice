@@ -3,6 +3,7 @@
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Role;
+use Carbon\Carbon;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers as C;
@@ -279,3 +280,22 @@ Route::get('/', function () {
 // Crud Application 
 
 Route::resource('/posts', C\PostsController::class);
+
+
+// Route::get('/dates', function () {
+
+//     echo Carbon::now()->addDays(10)->diffForHumans();
+// });
+
+
+Route::get('/getname', function () {
+    $user = User::find(1);
+    echo $user->name;
+});
+
+
+Route::get('/setname', function () {
+    $user = User::find(1);
+    $user->name = "gautam";
+    $user->save();
+});

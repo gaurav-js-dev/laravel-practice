@@ -3,19 +3,17 @@
 @section('content')
 
 <h1>Edit a Post</h1>
+{!! Form::model($post,['method'=>'PATCH','action'=>['App\Http\Controllers\PostsController@update',$post->id]]) !!}
+{!! Form::label('title','Title') !!}
+{!! Form::text('title',null,['class'=>'form-control']) !!}
+{!! Form::submit('Update Post',['class'=>'btn-info']) !!}
+{!! Form::close() !!}
 
-<form method="POST" action="/posts/{{$post->id}}">
-    <input type="hidden" name="_method" value="PUT">
-    @csrf
-    <input value="{{$post->title}}" type="text" name="title" placeholder="Enter Title">
-    <button value="UPDATE" type="submit" name="submit">Submit</button>
-</form>
 
-<form method="POST" action="/posts/{{$post->id}}">
-    @csrf
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" name="submit" value="DELETE">
 
-</form>
+{!! Form::open(['method'=>'DELETE','action'=>['App\Http\Controllers\PostsController@destroy',$post->id]]) !!}
+{!! Form::submit('Delete Post',['class'=>'btn-danger']) !!}
+{!! Form::close() !!}
+
 
 @section('footer')

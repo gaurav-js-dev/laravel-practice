@@ -8,11 +8,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
 {
+    public $directory = "/images/";
+
     use HasFactory;
     use SoftDeletes;
     protected $fillable = [
         'title',
-        'content'
+        'content',
+        'path'
     ];
 
     public function user()
@@ -34,5 +37,10 @@ class Post extends Model
     public static function scopeShow($query)
     {
         return $query->orderBy('id', 'asc')->get();
+    }
+
+    public function getPathAttribute($value)
+    {
+        return $this->directory . $value;
     }
 }

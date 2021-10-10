@@ -4,7 +4,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Role;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers as C;
 
@@ -299,3 +299,15 @@ Route::get('/setname', function () {
     $user->name = "gautam";
     $user->save();
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+// Route::get('/', function () {
+    // if (Auth::check()) {
+    //     return 'The User is logged in';
+    // }
+
+// });

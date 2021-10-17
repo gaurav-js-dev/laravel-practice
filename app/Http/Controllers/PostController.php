@@ -40,21 +40,6 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -64,7 +49,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        return view('editpost', ['post' => $post]);
     }
 
     /**
@@ -76,7 +62,12 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = $request->user();
+        $post = Post::find($id);
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $user->post()->save($post);
+        return redirect(route('dashboard'))->with('status', 'Post Updated Successfully');
     }
 
     /**
@@ -87,6 +78,7 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Post::destroy($id);
+        return redirect(route('dashboard'))->with('status', 'Post Deleted');
     }
 }

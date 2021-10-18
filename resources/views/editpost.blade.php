@@ -13,13 +13,13 @@
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
                     Title
                 </label>
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="title" id="title" type="text" value="{{$post->title}}" placeholder="Enter a title">
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="title" id="title" type="text" value="{{$post->title}}" placeholder="Enter a title" required>
             </div>
             <div class="mb-6">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="body">
                     Content
                 </label>
-                <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" name="body" id="body" placeholder="Your post content body goes here.">{{$post->body}}</textarea>
+                <textarea rows="10" cols="50" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" name="body" id="body" placeholder="Your post content body goes here." required>{{$post->body}}</textarea>
             </div>
             <div class="flex items-center justify-between">
                 <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" value="Update Post" />

@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function show_post()
     {
-        $posts = Post::paginate(5);
+        $posts = Post::paginate(4);
         return view('home', ['posts' => $posts]);
     }
 }

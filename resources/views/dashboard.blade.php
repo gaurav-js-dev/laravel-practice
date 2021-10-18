@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Admin Dashboard') }}
         </h2>
     </x-slot>
 
@@ -21,7 +21,7 @@
                         </div>
                     </div>
                     @endif
-                    <table class="divide-y divide-gray-300 ">
+                    <table class="divide-y divide-gray-300">
                         <thead class="bg-gray-50">
                             <tr>
                                 <th class="px-6 py-2 text-xs text-gray-500">
@@ -53,7 +53,7 @@
                                     </div>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-500">{{$post->body}}</div>
+                                    <textarea readonly rows="4" cols="50" class="form-textarea text-sm text-gray-500">{{$post->body}}</textarea>
                                 </td>
                                 <td class="px-6 py-4">
                                     <a href="{{url('/post/edit',$post->id)}}" class="px-4 py-1 text-sm text-blue-600 bg-blue-200 rounded-full">Edit</a>

@@ -56,38 +56,36 @@
         </div>
     </nav>
 
+
     <div class="bg-gray-900 pt-12 pb-6 flex-1 h-screen">
         <div class="container mx-auto">
             <div class="flex flex-wrap md:-mx-3">
-                @foreach ($posts as $post)
 
-                <div class="md:w-1/2 px-3 mb-6 w-full">
+                <div class="md:w-1/1 px-3 mb-6 w-full">
                     <div class="flex w-full h-full flex-wrap bg-gray-800 overflow-hidden rounded">
                         <div class="w-4/6 p-5">
                             <h2 class="text-white leading-normal text-lg">{{$post->title}}</h2>
-                            <div flex-1 p-2>
-                                <p class="text-white opacity-90 text-sm">{{substr($post->body, 0, 180);}}</p>
-                                <a href="{{route('post_show',$post->id)}}" class="rounded bg-blue-500 hover:bg-blue-700 mt-2 px-1 text-white text-xs"> Read More</a>
-                            </div>
                             <div class="flex flex-wrap justify-between items-center mt-6">
                                 <div class="inline-flex items-center">
                                     <div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
                                         <img src="https://i.stack.imgur.com/34AD2.jpg" />
                                     </div>
-
                                     <div class="flex-1 pl-2">
                                         <h2 class="text-white mb-1 text-xs"> {{$post->user->name}}</h2>
-                                        <p class=" text-white opacity-50 text-xs">{{$post->created_at->toFormattedDateString()}}</p>
+                                        <p class="text-white opacity-50 text-xs">{{$post->created_at->toFormattedDateString()}}</p>
                                     </div>
                                 </div>
                             </div>
+                            <div flex-1 p-5>
+                                <p class="text-white opacity-90 text-sm my-5">{{$post->body}}</p>
+                            </div>
                         </div>
                     </div>
-
                 </div>
-                @endforeach
             </div>
-            {{$posts->links()}}
+            <h2 class="text-white opacity-50 leading-normal text-lg"><a href="/">
+                    <- Back to Home</a>
+            </h2>
         </div>
 
     </div>

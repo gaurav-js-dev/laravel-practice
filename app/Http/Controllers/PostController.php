@@ -41,12 +41,27 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $post = Post::findOrFail($id);
+        return view('showpost',  ['post' => $post]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function edit($id)
     {
         $post = Post::find($id);

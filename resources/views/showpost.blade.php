@@ -63,7 +63,7 @@
 
                 <div class="md:w-1/1 px-3 mb-6 w-full">
                     <div class="flex w-full h-full flex-wrap bg-gray-800 overflow-hidden rounded">
-                        <div class="w-4/6 p-5">
+                        <div class="w-4/4 p-5">
                             <h2 class="text-white leading-normal text-lg">{{$post->title}}</h2>
                             <div class="flex flex-wrap justify-between items-center mt-6">
                                 <div class="inline-flex items-center">

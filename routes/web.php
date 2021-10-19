@@ -18,6 +18,7 @@ use League\CommonMark\Extension\SmartPunct\DashParser;
 */
 
 Route::get('/', [HomeController::class, 'show_post'])->name('home');
+Route::get('/post/{id}', [PostController::class, 'show'])->name('post_show');
 
 
 require __DIR__ . '/auth.php';
@@ -28,7 +29,6 @@ require __DIR__ . '/auth.php';
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'show_post'])->name('dashboard');
     Route::get('/post', [PostController::class, 'index'])->name('post_index');
-    Route::get('/post/{id}', [PostController::class, 'show'])->name('post_show');
     Route::post('/post', [PostController::class, 'create'])->name('post_create');
     Route::get('/post/edit/{id}', [PostController::class, 'edit'])->name('post_edit');
     Route::post('/post/edit/{id}', [PostController::class, 'update'])->name('post_update');

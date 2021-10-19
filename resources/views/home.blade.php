@@ -22,7 +22,7 @@
                 <div class="flex space-x-4">
                     <!-- logo -->
                     <div>
-                        <a href="#" class="flex items-center py-5 px-2 text-gray-700 hover:text-gray-900">
+                        <a href="/" class="flex items-center py-5 px-2 text-gray-700 hover:text-gray-900">
                             <svg class="h-6 w-6 mr-1 text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                             </svg>
@@ -59,37 +59,38 @@
     <div class="bg-gray-900 pt-12 pb-6 flex-1 h-screen">
         <div class="container mx-auto">
             <div class="flex flex-wrap md:-mx-3">
-                @foreach ($posts as $post)
+                @if(count($posts) <= 0) <h2 class="container mx-auto text-white opacity-90 text-lg">Please add an post. No post to display</h2>
+                    @else
+                    @foreach ($posts as $post)
+                    <div class="md:w-1/2 px-3 mb-6 w-full">
+                        <div class="flex w-full h-full flex-wrap bg-gray-800 overflow-hidden rounded">
+                            <div class="w-4/4 p-5">
+                                <h2 class="text-white leading-normal text-lg">{{$post->title}}</h2>
+                                <div flex-1 p-2>
+                                    <p class="text-white opacity-90 text-sm">{{substr($post->body, 0, 180);}}</p>
+                                    <a href="{{route('post_show',$post->id)}}" class="rounded bg-blue-500 hover:bg-blue-700 mt-2 px-1 text-white text-xs"> Read More</a>
+                                </div>
+                                <div class="flex flex-wrap justify-between items-center mt-6">
+                                    <div class="inline-flex items-center">
+                                        <div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+                                            <img src="https://i.stack.imgur.com/34AD2.jpg" />
+                                        </div>
 
-                <div class="md:w-1/2 px-3 mb-6 w-full">
-                    <div class="flex w-full h-full flex-wrap bg-gray-800 overflow-hidden rounded">
-                        <div class="w-4/6 p-5">
-                            <h2 class="text-white leading-normal text-lg">{{$post->title}}</h2>
-                            <div flex-1 p-2>
-                                <p class="text-white opacity-90 text-sm">{{substr($post->body, 0, 180);}}</p>
-                                <a href="{{route('post_show',$post->id)}}" class="rounded bg-blue-500 hover:bg-blue-700 mt-2 px-1 text-white text-xs"> Read More</a>
-                            </div>
-                            <div class="flex flex-wrap justify-between items-center mt-6">
-                                <div class="inline-flex items-center">
-                                    <div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
-                                        <img src="https://i.stack.imgur.com/34AD2.jpg" />
-                                    </div>
-
-                                    <div class="flex-1 pl-2">
-                                        <h2 class="text-white mb-1 text-xs"> {{$post->user->name}}</h2>
-                                        <p class=" text-white opacity-50 text-xs">{{$post->created_at->toFormattedDateString()}}</p>
+                                        <div class="flex-1 pl-2">
+                                            <h2 class="text-white mb-1 text-xs"> {{$post->user->name}}</h2>
+                                            <p class=" text-white opacity-50 text-xs">{{$post->created_at->toFormattedDateString()}}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                </div>
-                @endforeach
+                    </div>
+                    @endforeach
             </div>
             {{$posts->links()}}
+            @endif
         </div>
-
     </div>
 
 </body>
